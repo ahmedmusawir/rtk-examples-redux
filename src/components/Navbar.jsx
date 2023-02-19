@@ -36,7 +36,7 @@ const Navbar = ({ twClasses }) => {
           </ul>
         </div>
         <Link to={'/'} className='btn btn-ghost normal-case text-xl'>
-          Moose UI
+          Redux Toolkit
         </Link>
       </div>
       <div className='navbar-center hidden lg:flex'>

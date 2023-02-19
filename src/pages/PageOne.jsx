@@ -1,6 +1,7 @@
 import React from 'react';
 import './PageOne.scss';
 import { Row } from '../components';
+import { Audio, Dna } from 'react-loader-spinner';
 import { useGetAllProductsQuery } from '../services/dummyTriggerApi';
 
 function PageOne() {
@@ -8,7 +9,18 @@ function PageOne() {
 
   console.log('Raw data from API - Products:', allProductData);
 
-  if (isFetching) return 'Loading...';
+  if (isFetching)
+    return (
+      <Audio
+        height='100'
+        width='100'
+        color='#4fa94d'
+        ariaLabel='audio-loading'
+        wrapperStyle={{}}
+        wrapperClass='wrapper-class'
+        visible={true}
+      />
+    );
 
   return (
     <>

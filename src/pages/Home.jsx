@@ -42,7 +42,7 @@ const HomePage = () => {
 
   // if (isFetching) return 'loading...';
 
-  console.log('Raw data from API - Products:', allProducts);
+  // console.log('Raw data from API - Products:', allProducts);
 
   return (
     <Container twClasses={''} FULL={false} pageTitle={'RTK Query'}>
@@ -70,7 +70,9 @@ const HomePage = () => {
             {allProducts && (
               <ul>
                 {allProducts?.products?.map((prod) => (
-                  <li key={prod.id}>{prod.title}</li>
+                  <li key={prod.id}>
+                    {prod.id}. {prod.title}
+                  </li>
                 ))}
               </ul>
             )}
@@ -131,11 +133,14 @@ const HomePage = () => {
               onChange={(e) => setPostCat(e.target.value)}
             />
             <p>
-              <small>insert id from 1 to 100</small>
+              <small>
+                insert skincare, tops, laptops, automotive, smartphones
+              </small>
             </p>
             <button className='btn' onClick={handleDataByCat}>
               Get Data By Cat
             </button>
+
             <hr />
             {isFetchingProductsByCat && (
               <Dna
