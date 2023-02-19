@@ -1,45 +1,25 @@
 import React from 'react';
 import './PageOne.scss';
 import { Row } from '../components';
+import { useGetAllProductsQuery } from '../services/dummyTriggerApi';
+
 function PageOne() {
+  const { data: allProductData, isFetching } = useGetAllProductsQuery();
+
+  console.log('Raw data from API - Products:', allProductData);
+
+  if (isFetching) return 'Loading...';
+
   return (
     <>
-      <div className="moose-flex">
-        <div className="p-5 border-2">
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus
-            et, ex eum rem mollitia totam eius ad, sapiente eos maiores
-            voluptatum, explicabo harum quos dolores nemo eaque reprehenderit
-            quo. Iure.
-          </p>
-        </div>
-
-        <div className="p-5 border-2">
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus
-            et, ex eum rem mollitia totam eius ad, sapiente eos maiores
-            voluptatum, explicabo harum quos dolores nemo eaque reprehenderit
-            quo. Iure.
-          </p>
-        </div>
-
-        <div className="p-5 border-2">
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus
-            et, ex eum rem mollitia totam eius ad, sapiente eos maiores
-            voluptatum, explicabo harum quos dolores nemo eaque reprehenderit
-            quo. Iure.
-          </p>
-        </div>
-
-        <div className="p-5 border-2">
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus
-            et, ex eum rem mollitia totam eius ad, sapiente eos maiores
-            voluptatum, explicabo harum quos dolores nemo eaque reprehenderit
-            quo. Iure.
-          </p>
-        </div>
+      <div className='prose'>
+        <h1>RTK Query Standard</h1>
+        <hr />
+        <ul>
+          {allProductData?.products?.map((prod) => (
+            <li key={prod.id}>{prod.title}</li>
+          ))}
+        </ul>
       </div>
     </>
   );
